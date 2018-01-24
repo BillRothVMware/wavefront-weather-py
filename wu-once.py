@@ -16,10 +16,20 @@ import re
 import syslog
 
 sock = socket.socket()
+#
+# Below assumes the proxy is running on the same system. YMMV
+#
 sock.connect(('127.0.0.1', 2878))
+#
+# Set the source to yours.
+#
 sourceName = 'BrothPWS'
+#
+# Add your key here. You can get an API key here: https://www.wunderground.com/weather/api/
+# Also change KCASANJO821.json to your station. Or you can use this one.
+# 
 
-f = urllib2.urlopen('http://api.wunderground.com/api/6bea16c68a4066e9/conditions/q/pws:KCASANJO821.json')
+f = urllib2.urlopen('http://api.wunderground.com/api/YOURKEY/conditions/q/pws:KCASANJO821.json')
 json_string = f.read()
 parsed_json = json.loads(json_string)
 
